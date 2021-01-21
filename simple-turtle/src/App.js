@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Board from "./components/Board";
+import Controls from "./components/Controls";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [turtlePosition, setTurtlePosition] = useState([0, 0]);
+  const [direction, setDirection] = useState("right");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Board
+        turtlePosition={turtlePosition}
+        setTurtlePosition={setTurtlePosition}
+        direction={direction}
+      />
+      <Controls
+        turtlePosition={turtlePosition}
+        setTurtlePosition={setTurtlePosition}
+        direction={direction}
+        setDirection={setDirection}
+      />
     </div>
   );
-}
+};
 
 export default App;
