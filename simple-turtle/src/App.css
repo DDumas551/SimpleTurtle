@@ -35,3 +35,8 @@
 .turtle {
   font-size: 25px;
 }
+
+button {
+  min-width: 30px;
+  min-height: 30px;
+}

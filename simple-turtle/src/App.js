@@ -9,6 +9,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <h1>Simple Turtle</h1>
       <Board
         turtlePosition={turtlePosition}
         setTurtlePosition={setTurtlePosition}
