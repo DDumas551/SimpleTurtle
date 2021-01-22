@@ -34,6 +34,8 @@ const Controls = ({
           setDirection("right");
         }
         break;
+      default:
+        break;
     }
   };
   return (
