@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Square from "./Square";
+import stones from "./Stones";
 
 const Board = ({ turtlePosition, direction }) => {
-  const [squares, setSquares] = useState(
-    new Array(10).fill(new Array(10).fill(false))
-  );
-
+  const [squares, setSquares] = useState(new Array(10).fill(new Array(10)));
+  useEffect(() => {
+    setSquares(stones);
+  }, []);
   return (
     <div className="board">
       {squares.map((row, r) => {
@@ -17,7 +18,7 @@ const Board = ({ turtlePosition, direction }) => {
                   key={c}
                   row={r}
                   col={c}
-                  data={square}
+                  stone={square}
                   turtlePosition={turtlePosition}
                   direction={direction}
                   setSquares={setSquares}

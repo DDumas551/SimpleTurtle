@@ -6,9 +6,8 @@ const Controls = ({
   direction,
   setDirection,
 }) => {
+  console.log(turtlePosition);
   const moveTurtle = (direction) => {
-    // console.log(direction, turtlePosition);
-
     switch (direction) {
       case "up":
         if (turtlePosition[0] > 0) {

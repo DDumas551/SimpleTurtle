@@ -25,7 +25,6 @@
 .square {
   height: 100%;
   width: 10%;
-  background: rgb(172, 172, 172);
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -37,6 +36,6 @@
 }
 
 button {
-  min-width: 30px;
+  width: 60px;
   min-height: 30px;
 }
