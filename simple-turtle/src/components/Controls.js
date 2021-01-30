@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import stones from "./Stones";
 
-const Controls = ({ turtlePosition, setTurtlePosition, setDirection }) => {
-  const [clicks, setClicks] = useState(0);
+const Controls = ({
+  turtlePosition,
+  setTurtlePosition,
+  setDirection,
+  applesEaten,
+}) => {
   const moveTurtle = (direction) => {
     switch (direction) {
       case "ArrowUp":
@@ -10,7 +14,6 @@ const Controls = ({ turtlePosition, setTurtlePosition, setDirection }) => {
           turtlePosition[0] > 0 &&
           stones[turtlePosition[0] - 1][turtlePosition[1]]
         ) {
-          setClicks(clicks + 1);
           setTurtlePosition([turtlePosition[0] - 1, turtlePosition[1]]);
           setDirection("up");
         }
@@ -20,7 +23,6 @@ const Controls = ({ turtlePosition, setTurtlePosition, setDirection }) => {
           turtlePosition[0] < 9 &&
           stones[turtlePosition[0] + 1][turtlePosition[1]]
         ) {
-          setClicks(clicks + 1);
           setTurtlePosition([turtlePosition[0] + 1, turtlePosition[1]]);
           setDirection("down");
         }
@@ -30,7 +32,6 @@ const Controls = ({ turtlePosition, setTurtlePosition, setDirection }) => {
           turtlePosition[1] > 0 &&
           stones[turtlePosition[0]][turtlePosition[1] - 1]
         ) {
-          setClicks(clicks + 1);
           setTurtlePosition([turtlePosition[0], turtlePosition[1] - 1]);
           setDirection("left");
         }
@@ -40,7 +41,6 @@ const Controls = ({ turtlePosition, setTurtlePosition, setDirection }) => {
           turtlePosition[1] < 9 &&
           stones[turtlePosition[0]][turtlePosition[1] + 1]
         ) {
-          setClicks(clicks + 1);
           setTurtlePosition([turtlePosition[0], turtlePosition[1] + 1]);
           setDirection("right");
         }
@@ -52,7 +52,7 @@ const Controls = ({ turtlePosition, setTurtlePosition, setDirection }) => {
   window.onkeydown = (e) => moveTurtle(e.code);
   return (
     <div style={{ marginTop: "50px" }}>
-      <p>Moves: {clicks}</p>
+      <p>Apples Eaten: {applesEaten}</p>
       <div>
         <button onClick={() => moveTurtle("ArrowUp")}>Up</button>
         <div>

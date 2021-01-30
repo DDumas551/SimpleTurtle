@@ -6,6 +6,7 @@ import "./App.css";
 const App = () => {
   const [turtlePosition, setTurtlePosition] = useState([0, 0]);
   const [direction, setDirection] = useState("right");
+  const [applesEaten, setApplesEaten] = useState(-1);
 
   return (
     <div className="App">
@@ -14,12 +15,15 @@ const App = () => {
         turtlePosition={turtlePosition}
         setTurtlePosition={setTurtlePosition}
         direction={direction}
+        setApplesEaten={setApplesEaten}
+        applesEaten={applesEaten}
       />
       <Controls
         turtlePosition={turtlePosition}
         setTurtlePosition={setTurtlePosition}
         direction={direction}
         setDirection={setDirection}
+        applesEaten={applesEaten}
       />
     </div>
   );

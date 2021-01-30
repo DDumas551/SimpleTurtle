@@ -3,8 +3,8 @@
 }
 
 .board {
-  height: 500px;
-  max-width: 500px;
+  height: 400px;
+  max-width: 400px;
   border: 1px solid black;
   margin: auto;
   background-color: rgb(218, 249, 255);
@@ -32,7 +32,11 @@
 }
 
 .turtle {
-  font-size: 25px;
+  font-size: 24px;
+}
+
+.apple {
+  font-size: 20px;
 }
 
 button {
