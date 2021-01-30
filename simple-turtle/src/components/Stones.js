@@ -1,14 +1,16 @@
+const size = 10;
+
 const stones = [
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
-  new Array(10).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
+  new Array(size).fill(null),
 ];
 
 (function setStones() {
