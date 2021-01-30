@@ -16,7 +16,9 @@ const stones = [
   for (let i = 0; i < stones.length; i++) {
     for (let k = 0; k < stones[i].length; k++) {
       rand = Math.floor(Math.random() * 100);
-      if (rand < 85) {
+      if (i < 2 && k < 2) {
+        stones[i][k] = true;
+      } else if (rand < 85) {
         stones[i][k] = true;
       } else {
         stones[i][k] = false;
