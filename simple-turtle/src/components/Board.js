@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Square from "./Square";
 import stones from "./Stones";
+import { TurtlePositionContext } from "./contexts/TurtlePositionContext";
 
-const Board = ({ turtlePosition, direction, setApplesEaten, applesEaten }) => {
-  const [squares, setSquares] = useState(
-    new Array(1).fill(new Array(10).fill(new Array(10)))
-  );
+const Board = ({ direction, setApplesEaten, applesEaten }) => {
+  const { turtlePosition } = useContext(TurtlePositionContext);
+  const [squares, setSquares] = useState([]);
   const [apple, setApple] = useState([0, 0]);
+
   const randCoords = (stones) => {
     let boo = true;
     while (boo) {
@@ -18,10 +19,12 @@ const Board = ({ turtlePosition, direction, setApplesEaten, applesEaten }) => {
       }
     }
   };
+
   useEffect(() => {
     setSquares(stones);
     randCoords(stones);
   }, []);
+
   return (
     <div className="board">
       {squares.map((row, r) => {

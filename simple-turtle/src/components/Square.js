@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Turtle from "./Turtle";
 import Apple from "./Apple";
+import { TurtlePositionContext } from "./contexts/TurtlePositionContext";
 
-const Square = ({
+export default function Square({
   row,
   col,
-  turtlePosition,
   direction,
   stone,
   applePosition,
   setApple,
   setApplesEaten,
   applesEaten,
-}) => {
+}) {
+  const { turtlePosition } = useContext(TurtlePositionContext);
   const renderTurtle =
     row === turtlePosition[0] && col === turtlePosition[1] ? true : false;
   const renderApple =
@@ -37,5 +38,4 @@ const Square = ({
       {renderApple && <Apple />}
     </div>
   );
-};
-export default Square;
+}

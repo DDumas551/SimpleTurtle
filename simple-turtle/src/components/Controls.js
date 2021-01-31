@@ -1,52 +1,59 @@
-import React from "react";
+import React, { useContext } from "react";
 import stones from "./Stones";
+import { TurtlePositionContext } from "./contexts/TurtlePositionContext";
 
-const Controls = ({
-  turtlePosition,
-  setTurtlePosition,
-  setDirection,
-  applesEaten,
-}) => {
+const Controls = ({ setDirection, applesEaten }) => {
+  const { turtlePosition, setTurtlePosition } = useContext(
+    TurtlePositionContext
+  );
   const moveTurtle = (direction) => {
-    switch (direction) {
-      case "ArrowUp":
-        if (
-          turtlePosition[0] > 0 &&
-          stones[turtlePosition[0] - 1][turtlePosition[1]]
-        ) {
-          setTurtlePosition([turtlePosition[0] - 1, turtlePosition[1]]);
-          setDirection("up");
-        }
-        break;
-      case "ArrowDown":
-        if (
-          turtlePosition[0] < 9 &&
-          stones[turtlePosition[0] + 1][turtlePosition[1]]
-        ) {
-          setTurtlePosition([turtlePosition[0] + 1, turtlePosition[1]]);
-          setDirection("down");
-        }
-        break;
-      case "ArrowLeft":
-        if (
-          turtlePosition[1] > 0 &&
-          stones[turtlePosition[0]][turtlePosition[1] - 1]
-        ) {
-          setTurtlePosition([turtlePosition[0], turtlePosition[1] - 1]);
-          setDirection("left");
-        }
-        break;
-      case "ArrowRight":
-        if (
-          turtlePosition[1] < 9 &&
-          stones[turtlePosition[0]][turtlePosition[1] + 1]
-        ) {
-          setTurtlePosition([turtlePosition[0], turtlePosition[1] + 1]);
-          setDirection("right");
-        }
-        break;
-      default:
-        break;
+    const options = {
+      ArrowUp: true,
+      ArrowDown: true,
+      ArrowLeft: true,
+      ArrowRight: true,
+    };
+    if (options[direction]) {
+      switch (direction) {
+        case "ArrowUp":
+          if (
+            turtlePosition[0] > 0 &&
+            stones[turtlePosition[0] - 1][turtlePosition[1]]
+          ) {
+            setTurtlePosition([turtlePosition[0] - 1, turtlePosition[1]]);
+            setDirection("up");
+          }
+          break;
+        case "ArrowDown":
+          if (
+            turtlePosition[0] < 9 &&
+            stones[turtlePosition[0] + 1][turtlePosition[1]]
+          ) {
+            setTurtlePosition([turtlePosition[0] + 1, turtlePosition[1]]);
+            setDirection("down");
+          }
+          break;
+        case "ArrowLeft":
+          if (
+            turtlePosition[1] > 0 &&
+            stones[turtlePosition[0]][turtlePosition[1] - 1]
+          ) {
+            setTurtlePosition([turtlePosition[0], turtlePosition[1] - 1]);
+            setDirection("left");
+          }
+          break;
+        case "ArrowRight":
+          if (
+            turtlePosition[1] < 9 &&
+            stones[turtlePosition[0]][turtlePosition[1] + 1]
+          ) {
+            setTurtlePosition([turtlePosition[0], turtlePosition[1] + 1]);
+            setDirection("right");
+          }
+          break;
+        default:
+          throw new Error();
+      }
     }
   };
   window.onkeydown = (e) => moveTurtle(e.code);
@@ -57,9 +64,9 @@ const Controls = ({
         <button onClick={() => moveTurtle("ArrowUp")}>Up</button>
         <div>
           <button onClick={() => moveTurtle("ArrowLeft")}>Left</button>
-          <button onClick={() => moveTurtle("ArrowDown")}>Down</button>
           <button onClick={() => moveTurtle("ArrowRight")}>Right</button>
         </div>
+        <button onClick={() => moveTurtle("ArrowDown")}>Down</button>
       </div>
     </div>
   );
