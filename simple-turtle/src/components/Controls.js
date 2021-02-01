@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import stones from "./Stones";
-import { TurtlePositionContext } from "./contexts/AppContext";
+import { AppContext } from "./contexts/AppContext";
 
 const Controls = () => {
   const {
@@ -8,7 +8,7 @@ const Controls = () => {
     setTurtlePosition,
     setDirection,
     applesEaten,
-  } = useContext(TurtlePositionContext);
+  } = useContext(AppContext);
   const moveTurtle = (direction) => {
     const options = {
       ArrowUp: true,

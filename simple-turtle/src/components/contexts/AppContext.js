@@ -1,15 +1,15 @@
 import React, { createContext, useState } from "react";
 
-export const TurtlePositionContext = createContext();
+export const AppContext = createContext();
 
-export function TurtlePositionProvider(props) {
+export function AppProvider(props) {
   const [turtlePosition, setTurtlePosition] = useState([0, 0]);
   const [direction, setDirection] = useState("right");
   const [squares, setSquares] = useState([]);
   const [applesEaten, setApplesEaten] = useState(0);
 
   return (
-    <TurtlePositionContext.Provider
+    <AppContext.Provider
       value={{
         turtlePosition,
         setTurtlePosition,
@@ -22,6 +22,6 @@ export function TurtlePositionProvider(props) {
       }}
     >
       {props.children}
-    </TurtlePositionContext.Provider>
+    </AppContext.Provider>
   );
 }

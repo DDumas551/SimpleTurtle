@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import Square from "./Square";
 import stones from "./Stones";
-import { TurtlePositionContext } from "./contexts/AppContext";
+import { AppContext } from "./contexts/AppContext";
 
 const Board = () => {
-  const { squares, setSquares } = useContext(TurtlePositionContext);
+  const { squares, setSquares } = useContext(AppContext);
   const [apple, setApple] = useState([0, 0]);
 
   const randCoords = (stones) => {

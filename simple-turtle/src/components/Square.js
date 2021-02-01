@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Turtle from "./Turtle";
 import Apple from "./Apple";
-import { TurtlePositionContext } from "./contexts/AppContext";
+import { AppContext } from "./contexts/AppContext";
 
 export default function Square({
   row,
@@ -10,7 +10,7 @@ export default function Square({
   applePosition,
   setApple,
 }) {
-  const { turtlePosition, direction, applesEaten, setApplesEaten } = useContext(TurtlePositionContext);
+  const { turtlePosition, direction, applesEaten, setApplesEaten } = useContext(AppContext);
   const renderTurtle =
     row === turtlePosition[0] && col === turtlePosition[1] ? true : false;
   const renderApple =
