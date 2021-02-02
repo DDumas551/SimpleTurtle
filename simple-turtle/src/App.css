@@ -35,11 +35,12 @@
   font-size: 24px;
 }
 
-.apple {
+.apple,
+.carrot {
   font-size: 20px;
 }
 
 button {
   width: 100px;
-  min-height: 50px;
+  min-height: 40px;
 }

@@ -6,6 +6,7 @@ import { AppContext } from "./contexts/AppContext";
 const Board = () => {
   const { squares, setSquares } = useContext(AppContext);
   const [apple, setApple] = useState([0, 0]);
+  const [carrot, setCarrot] = useState([0, 0]);
 
   const randCoords = (stones) => {
     let boo = true;
@@ -19,9 +20,22 @@ const Board = () => {
     }
   };
 
+  const randCoordsRabbit = (stones) => {
+    let foo = true;
+    while (foo) {
+      let x = Math.floor(Math.random() * 9);
+      let y = Math.floor(Math.random() * 9);
+      if (stones[x][y]) {
+        foo = false;
+        setCarrot([x, y]);
+      }
+    }
+  };
+
   useEffect(() => {
     setSquares(stones);
     randCoords(stones);
+    randCoordsRabbit(stones);
   }, [setSquares]);
 
   return (
@@ -37,6 +51,8 @@ const Board = () => {
                   col={c}
                   stone={square}
                   applePosition={apple}
+                  carrotPosition={carrot}
+                  setCarrot={() => randCoordsRabbit(stones)}
                   setApple={() => randCoords(stones)}
                 />
               );

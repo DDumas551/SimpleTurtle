@@ -5,9 +5,14 @@ import { AppContext } from "./contexts/AppContext";
 const Controls = () => {
   const {
     turtlePosition,
+    rabbitPosition,
+    setRabbitPosition,
     setTurtlePosition,
     setDirection,
+    setRabbitDirection,
     applesEaten,
+    carrotsEaten,
+    windowWidth,
   } = useContext(AppContext);
   const moveTurtle = (direction) => {
     const options = {
@@ -15,6 +20,10 @@ const Controls = () => {
       ArrowDown: true,
       ArrowLeft: true,
       ArrowRight: true,
+      KeyW: true,
+      KeyA: true,
+      KeyS: true,
+      KeyD: true,
     };
     if (options[direction]) {
       switch (direction) {
@@ -54,15 +63,55 @@ const Controls = () => {
             setDirection("right");
           }
           break;
+        case "KeyW":
+          if (
+            rabbitPosition[0] > 0 &&
+            stones[rabbitPosition[0] - 1][rabbitPosition[1]]
+          ) {
+            setRabbitPosition([rabbitPosition[0] - 1, rabbitPosition[1]]);
+            setRabbitDirection("up");
+          }
+          break;
+        case "KeyS":
+          if (
+            rabbitPosition[0] < 9 &&
+            stones[rabbitPosition[0] + 1][rabbitPosition[1]]
+          ) {
+            setRabbitPosition([rabbitPosition[0] + 1, rabbitPosition[1]]);
+            setRabbitDirection("down");
+          }
+          break;
+        case "KeyA":
+          if (
+            rabbitPosition[1] > 0 &&
+            stones[rabbitPosition[0]][rabbitPosition[1] - 1]
+          ) {
+            setRabbitPosition([rabbitPosition[0], rabbitPosition[1] - 1]);
+            setRabbitDirection("left");
+          }
+          break;
+        case "KeyD":
+          if (
+            rabbitPosition[1] < 9 &&
+            stones[rabbitPosition[0]][rabbitPosition[1] + 1]
+          ) {
+            setRabbitPosition([rabbitPosition[0], rabbitPosition[1] + 1]);
+            setRabbitDirection("right");
+          }
+          break;
         default:
           throw new Error();
       }
     }
   };
+
   window.onkeydown = (e) => moveTurtle(e.code);
+
   return (
-    <div style={{ marginTop: "50px" }}>
-      <p>Apples Eaten: {applesEaten}</p>
+    <div style={{ marginTop: "10px" }}>
+      {(windowWidth && (
+        <p>{`Apples: ${applesEaten} | Carrots: ${carrotsEaten}`}</p>
+      )) || <p>{`Apples Eaten: ${applesEaten}`}</p>}
       <div>
         <button onClick={() => moveTurtle("ArrowUp")}>Up</button>
         <div>

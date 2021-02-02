@@ -18,7 +18,9 @@ const stones = [
       rand = Math.floor(Math.random() * 100);
       if (i < 2 && k < 2) {
         stones[i][k] = true;
-      } else if (rand < 85) {
+      } else if (i > 7 && k > 7) {
+        stones[i][k] = true;
+      } else if (rand < 82) {
         stones[i][k] = true;
       } else {
         stones[i][k] = false;
