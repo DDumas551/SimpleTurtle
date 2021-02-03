@@ -106,12 +106,23 @@ const Controls = () => {
   };
 
   window.onkeydown = (e) => moveTurtle(e.code);
-
+  const renderTwoPlayerScore = () => {
+    return(<div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        marginBottom: "10px",
+        fontSize: "30px",
+      }}
+    >
+      <div style={{ margin: "0px 90px 0px 0px" }}>{`${carrotsEaten} 🥕  `}</div>
+      <div>{`🍎${applesEaten}`}</div>
+    </div>)
+  }
   return (
     <div style={{ marginTop: "10px" }}>
-      {(windowWidth && (
-        <p>{`Apples: ${applesEaten} | Carrots: ${carrotsEaten}`}</p>
-      )) || <p>{`Apples Eaten: ${applesEaten}`}</p>}
+      {windowWidth ? renderTwoPlayerScore() : <p>{`Apples Eaten: ${applesEaten}`}</p>}
       <div>
         <button onClick={() => moveTurtle("ArrowUp")}>Up</button>
         <div>
