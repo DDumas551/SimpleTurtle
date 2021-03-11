@@ -34,6 +34,7 @@ export default function Square({
   const renderCarrot =
     row === carrotPosition[0] && col === carrotPosition[1] ? true : false;
 
+  // Turtle eats apple
   useEffect(() => {
     if (
       turtlePosition[0] === applePosition[0] &&
@@ -44,6 +45,24 @@ export default function Square({
     }
   }, [applePosition, applesEaten, setApple, setApplesEaten, turtlePosition]);
 
+  // Turtle eats carrot
+  useEffect(() => {
+    if (
+      turtlePosition[0] === carrotPosition[0] &&
+      turtlePosition[1] === carrotPosition[1]
+    ) {
+      setCarrot();
+      setCarrotsEaten(carrotsEaten - 1);
+    }
+  }, [
+    carrotPosition,
+    carrotsEaten,
+    setCarrot,
+    setCarrotsEaten,
+    turtlePosition,
+  ]);
+
+  // Rabbit eats carrot
   useEffect(() => {
     if (
       rabbitPosition[0] === carrotPosition[0] &&
@@ -59,6 +78,17 @@ export default function Square({
     setCarrotsEaten,
     rabbitPosition,
   ]);
+
+  //  Rabbit eats apple
+  useEffect(() => {
+    if (
+      rabbitPosition[0] === applePosition[0] &&
+      rabbitPosition[1] === applePosition[1]
+    ) {
+      setApple();
+      setApplesEaten(applesEaten - 1);
+    }
+  }, [applePosition, applesEaten, setApple, setApplesEaten, rabbitPosition]);
 
   return (
     <div

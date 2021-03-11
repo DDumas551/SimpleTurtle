@@ -3,8 +3,8 @@ import React, { createContext, useState } from "react";
 export const AppContext = createContext();
 
 export function AppProvider(props) {
-  const [turtlePosition, setTurtlePosition] = useState([0, 0]);
-  const [rabbitPosition, setRabbitPosition] = useState([9, 9]);
+  const [turtlePosition, setTurtlePosition] = useState([9, 9]);
+  const [rabbitPosition, setRabbitPosition] = useState([0, 0]);
   const [direction, setDirection] = useState("right");
   const [rabbitDirection, setRabbitDirection] = useState("left");
   const [squares, setSquares] = useState([]);

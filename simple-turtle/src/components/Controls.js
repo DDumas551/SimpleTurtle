@@ -106,6 +106,7 @@ const Controls = () => {
   };
 
   window.onkeydown = (e) => moveTurtle(e.code);
+
   const renderTwoPlayerScore = () => {
     return(<div
       style={{
@@ -120,6 +121,7 @@ const Controls = () => {
       <div>{`🍎${applesEaten}`}</div>
     </div>)
   }
+  
   return (
     <div style={{ marginTop: "10px" }}>
       {windowWidth ? renderTwoPlayerScore() : <p>{`Apples Eaten: ${applesEaten}`}</p>}
