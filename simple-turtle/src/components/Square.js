@@ -23,16 +23,21 @@ export default function Square({
     carrotsEaten,
     setCarrotsEaten,
     rabbitDirection,
-    windowWidth,
+    twoPlayers,
   } = useContext(AppContext);
+
   const renderTurtle =
     row === turtlePosition[0] && col === turtlePosition[1] ? true : false;
   const renderApple =
     row === applePosition[0] && col === applePosition[1] ? true : false;
   const renderRabbit =
-    row === rabbitPosition[0] && col === rabbitPosition[1] ? true : false;
+    row === rabbitPosition[0] && col === rabbitPosition[1] && twoPlayers
+      ? true
+      : false;
   const renderCarrot =
-    row === carrotPosition[0] && col === carrotPosition[1] ? true : false;
+    row === carrotPosition[0] && col === carrotPosition[1] && twoPlayers
+      ? true
+      : false;
 
   // Turtle eats apple
   useEffect(() => {
@@ -97,8 +102,8 @@ export default function Square({
     >
       {renderTurtle && <Turtle direction={direction} />}
       {renderApple && <Apple />}
-      {windowWidth && renderRabbit && <Rabbit direction={rabbitDirection} />}
-      {windowWidth && renderCarrot && <Carrot />}
+      {renderRabbit && <Rabbit direction={rabbitDirection} />}
+      {renderCarrot && <Carrot />}
     </div>
   );
 }

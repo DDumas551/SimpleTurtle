@@ -4,7 +4,7 @@ import stones from "./Stones";
 import { AppContext } from "./contexts/AppContext";
 
 const Board = () => {
-  const { squares, setSquares } = useContext(AppContext);
+  const { squares, setSquares, gameSize } = useContext(AppContext);
   const [apple, setApple] = useState([0, 0]);
   const [carrot, setCarrot] = useState([0, 0]);
 
@@ -39,27 +39,29 @@ const Board = () => {
   }, [setSquares]);
 
   return (
-    <div className="board">
-      {squares.map((row, r) => {
-        return (
-          <div className="row" key={r}>
-            {row.map((square, c) => {
-              return (
-                <Square
-                  key={c}
-                  row={r}
-                  col={c}
-                  stone={square}
-                  applePosition={apple}
-                  carrotPosition={carrot}
-                  setCarrot={() => randCoordsRabbit(stones)}
-                  setApple={() => randCoords(stones)}
-                />
-              );
-            })}
-          </div>
-        );
-      })}
+    <div>
+      <div className={`board ${gameSize === "small" ? "small" : "medium"}`}>
+        {squares.map((row, r) => {
+          return (
+            <div className="row" key={r}>
+              {row.map((square, c) => {
+                return (
+                  <Square
+                    key={c}
+                    row={r}
+                    col={c}
+                    stone={square}
+                    applePosition={apple}
+                    carrotPosition={carrot}
+                    setCarrot={() => randCoordsRabbit(stones)}
+                    setApple={() => randCoords(stones)}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

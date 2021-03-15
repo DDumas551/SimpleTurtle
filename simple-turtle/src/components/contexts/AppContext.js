@@ -10,7 +10,9 @@ export function AppProvider(props) {
   const [squares, setSquares] = useState([]);
   const [applesEaten, setApplesEaten] = useState(0);
   const [carrotsEaten, setCarrotsEaten] = useState(0);
-  const windowWidth = window.parent.innerWidth > 800 ? true : false;
+  const [gameSize, setGameSize] = useState("medium");
+  const [twoPlayers, setTwoPlayers] = useState(false);
+  const [mobileMode, setMobileMode] = useState(true);
 
   return (
     <AppContext.Provider
@@ -29,7 +31,12 @@ export function AppProvider(props) {
         setApplesEaten,
         carrotsEaten,
         setCarrotsEaten,
-        windowWidth
+        gameSize,
+        setGameSize,
+        twoPlayers,
+        setTwoPlayers,
+        mobileMode,
+        setMobileMode,
       }}
     >
       {props.children}
