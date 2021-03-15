@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <title>Pie Chart</title> -->
+
+    <style>
+      .piechart1 {
+        margin-top: 750px;
+        display: block;
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        /* border: 1px solid black; */
+        border-radius: 50%;
+        background-image: conic-gradient(
+          rgba(255, 255, 255, 0) 2deg,
+          black 20deg,
+          black -855deg,
+          rgba(255, 255, 255, 0) 38deg
+        );
+        animation: spin infinite linear;
+        animation-duration: 1s;
+      }
+
+      .piechart2 {
+        margin-top: 750px;
+        display: block;
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        /* border: 1px solid black; */
+        border-radius: 50%;
+        background-image: conic-gradient(
+          rgba(255, 255, 255, 0) 242deg,
+          black 260deg,
+          black 208deg,
+          rgba(255, 255, 255, 0) 278deg
+        );
+        animation: spin infinite linear;
+        animation-duration: 2s;
+      }
+
+      .piechart3 {
+        margin-top: 750px;
+        display: block;
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        /* border: 1px solid black; */
+        border-radius: 50%;
+        background-image: conic-gradient(
+          rgba(255, 255, 255, 0) 122deg,
+          black 140deg,
+          black 84deg,
+          rgba(255, 255, 255, 0) 158deg
+        );
+        animation: spin infinite linear;
+        animation-duration: 1.5s;
+      }
+
+      body,
+      .piechart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <h1>Pie Chart</h1> -->
+    <div class="piechart piechart1"></div>
+    <div class="piechart piechart2"></div>
+    <div class="piechart piechart3"></div>
+  </body>
+</html>
